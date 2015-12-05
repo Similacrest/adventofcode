@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-"""Day 5 of AdventOfCode.com: the Regex challenge"""
+"""Day 5 of AdventOfCode.com: regex matching"""
 import re
 import os
 
