@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """Day 2 of AdventOfCode.com: iterating over arrays doing simple arithmetic"""
 import os

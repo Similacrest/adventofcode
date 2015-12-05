@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """Day 3 of AdventOfCode.com: traversing and extending matrices"""
 import os
