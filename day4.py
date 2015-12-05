@@ -5,6 +5,10 @@ import os
 import hashlib
 import math
 
+# TODO: multithreading
+# TODO: itertools/yield
+# TODO: reuse previous function values (caching)
+
 
 def adventcoin_mine(salt, zeros, prob=0.99):
     """MD5-hashes salt + counter, increasing counter until hash begins with a given number of 0's in HEX,
@@ -15,7 +19,7 @@ def adventcoin_mine(salt, zeros, prob=0.99):
     :return: positive number that satisfies the condition, or 0 if the maximum value was exceeded
     """
     i = 0
-    zeros_string = "".rjust(zeros, '0')
+    zeros_string = '0'*zeros
 
     if 1-prob > 1e-8:
         max_i = int(round(math.log(1-prob, 1-(1/16) ** zeros)))
@@ -28,7 +32,7 @@ def adventcoin_mine(salt, zeros, prob=0.99):
 
         i += 1
         md5_hash = hashlib.md5((salt+str(i)).encode('utf8')).hexdigest()
-        if md5_hash[:zeros] == zeros_string:
+        if md5_hash.startswith(zeros_string):
             break
     return i
 
