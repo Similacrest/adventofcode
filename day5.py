@@ -23,7 +23,7 @@ class RegexMatchCounter:
             self.__count += 1
 
     def count(self):
-        """:returns: the current value of how many strings have matched regexes
+        """:return: the current value of how many strings have matched regexes
         """
         return self.__count
 

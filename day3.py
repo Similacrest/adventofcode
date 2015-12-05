@@ -1,9 +1,18 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""Day 3 of AdventOfCode.com: traversing and extending matrices"""
 import os
 import numpy as np
 import math
 
 
 def count_visited_houses(moves, performers=1):
+    """
+    :param moves: string of '^' (up), 'V' (down), '<' (left), '>' (right) characters,
+    which represent instructions for all performers
+    :param performers: positive integer that determines how many performers are doing instructions in turns
+    :return: amount of cells visited by at least 1 performer at least once
+    """
     count = 0
     current_performer = 0
     width = 11
