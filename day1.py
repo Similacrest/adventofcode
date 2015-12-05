@@ -16,6 +16,6 @@ def count_floors(floor_string):
     return {'Floor': floor, 'Basement first entered on step:': basement_enter}
 
 
-with open(os.path.dirname(os.path.realpath('__file__')) + "/day1.txt", "r") as datafile:
+with open(os.path.dirname(os.path.realpath('__file__')) + "/input/day1.txt", "r") as datafile:
     data = datafile.read().replace('\n', '')
 print(count_floors(data))

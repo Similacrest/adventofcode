@@ -28,7 +28,7 @@ def presents(sets_of_dimensions):
            sum([present_ribbon_length(dimensions) for dimensions in sets_of_dimensions])
 
 sets_of_dims = list()
-with open(os.path.dirname(os.path.realpath('__file__')) + "/day2.txt", "r") as datafile:
+with open(os.path.dirname(os.path.realpath('__file__')) + "/input/day2.txt", "r") as datafile:
     for line in datafile:
         sets_of_dims.append([float(s) for s in line.rstrip("\n").split("x")])
 

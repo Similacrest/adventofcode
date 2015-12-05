@@ -26,14 +26,14 @@ class RegexMatchCounter:
         """:returns: the current value of how many strings have matched regexes
         """
         return self.__count
-       
-       
+
+
 matchers = [
  RegexMatchCounter([r'[aeiou].*[aeiou].*[aeiou]', r'(.)\1', r'^((?!(ab)|(cd)|(pq)|(xy)).)*$']),
  RegexMatchCounter([r'(..).*\1',                  r'(.).\1'])
 ]
 
-with open(os.path.dirname(os.path.realpath('__file__')) + "/day5.txt", "r") as datafile:
+with open(os.path.dirname(os.path.realpath('__file__')) + "/input/day5.txt", "r") as datafile:
     for line in datafile:
         for matcher in matchers:
             matcher.check(line)

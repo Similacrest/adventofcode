@@ -10,7 +10,7 @@ def adventcoin_mine(salt, zeros):
         md5_hash = hashlib.md5((salt+str(i)).encode('utf8')).hexdigest()
     return i
 
-with open(os.path.dirname(os.path.realpath('__file__')) + "/day4.txt", "r") as datafile:
+with open(os.path.dirname(os.path.realpath('__file__')) + "/input/day4.txt", "r") as datafile:
     data = datafile.read().replace('\n', '')
 
 print(adventcoin_mine(data, 5))
