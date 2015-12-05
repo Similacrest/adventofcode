@@ -29,7 +29,7 @@ class RegexMatchCounter:
 
 
 matchers = [
- RegexMatchCounter([r'[aeiou].*[aeiou].*[aeiou]', r'(.)\1', r'^((?!(ab)|(cd)|(pq)|(xy)).)*$']),
+ RegexMatchCounter([r'([aeiou].*){3}', r'(.)\1', r'^((?!(ab)|(cd)|(pq)|(xy)).)*$']),
  RegexMatchCounter([r'(..).*\1',                  r'(.).\1'])
 ]
 
