@@ -3,20 +3,24 @@
 """Day 4 of AdventOfCode.com: md5 hash bruteforcing"""
 import os
 import hashlib
+import math
 
 
-def adventcoin_mine(salt, zeros, margin_coefficient=4):
+def adventcoin_mine(salt, zeros, prob=0.99):
     """MD5-hashes salt + counter, increasing counter until hash begins with a given number of 0's in HEX,
     or until maximum value is reached
     :param salt: string to append before countes
     :param zeros: number of zeros to search for
-    :param margin_coefficient: is multiplied by 16^zeroes to get the maximum value; set it to 0 to search indefinitely
+    :param prob: float between 0 and 1, we stop the search if we didn't find the value with this confidence interval
     :return: positive number that satisfies the condition, or 0 if the maximum value was exceeded
     """
     i = 0
     zeros_string = "".rjust(zeros, '0')
-    max_i = int(round(pow(16, zeros) * margin_coefficient))
 
+    if 1-prob > 1e-8:
+        max_i = int(round(math.log(1-prob, 1-(1/16) ** zeros)))
+    else:
+        max_i = 0
     while True:
         if i > max_i > 0:  # max_i = 0 means we ignore maximum
             # We stop here
