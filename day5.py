@@ -5,7 +5,7 @@ import re
 import os
 
 
-class RegexMatchCounter:
+class RegexMatchCounter(object):
     """This class counts strings which satisfy all specified regular expressions
 
     """
