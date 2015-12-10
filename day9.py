@@ -1,23 +1,22 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """Day 9 of AdventOfCode.com: Dijkstra is, for sure, a difficult surname"""
-import re
 import os
-from functools import lru_cache
 from copy import deepcopy
 
 
+# ToDo: rewrite this one with multithreading and no copying and graph tools
 def delete_graph_node(node, graph):
     """Returns copy graph with node deleted
     :param node: key of node to delete
     :param graph: target of graph
     :return: copy of graph with node deleted
     """
-    gr = deepcopy(graph)
-    for n in gr[node]:
-        del gr[n][node]
-    del gr[node]
-    return gr
+    new_graph = deepcopy(graph)
+    for n in new_graph[node]:
+        del new_graph[n][node]
+    del new_graph[node]
+    return new_graph
 
 
 def hamilton_path_from_start_len(start, graph, selector=min):
@@ -48,18 +47,16 @@ def main():
     read graph, find min and max paths
     """
     cities = {}
-    data_regex = re.compile("([A-Za-z]+) to ([A-Za-z]+) = (\d+)")
     with open(os.path.dirname(os.path.realpath('__file__')) + "/input/day9.txt", "r") as datafile:
         for line in datafile:
-            data_regex_match = data_regex.match(line)
-            if data_regex_match is not None:
-                for k in range(1, 3):
-                    if data_regex_match.group(k) not in cities:
-                        cities[data_regex_match.group(k)] = {}
-                    cities[data_regex_match.group(k)][data_regex_match.group(3-k)] = \
-                        float(data_regex_match.group(3))
+            (source, _, dest, _, distance) = line.split()
+            for city in (source, dest):
+                if city not in cities:
+                    cities[city] = {}
+            cities[source][dest] = cities[dest][source] = float(distance)
 
         print(hamilton_path_len(cities, min))
         print(hamilton_path_len(cities, max))
+
 if __name__ == '__main__':
     main()
